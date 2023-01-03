@@ -32,7 +32,7 @@ limitations under the License.
 #include "grape/parallel/parallel_engine.h"
 #include "grape/util.h"
 #include "grape/worker/comm_spec.h"
-
+#include<iostream>
 namespace grape {
 
 /**

@@ -16,10 +16,15 @@ limitations under the License.
 #ifndef GRAPE_FRAGMENT_PARTITIONER_H_
 #define GRAPE_FRAGMENT_PARTITIONER_H_
 
+#include <grape/serialization/in_archive.h>
+#include <grape/serialization/out_archive.h>
+
+#include <memory>
 #include <vector>
 
 #include "flat_hash_map/flat_hash_map.hpp"
 #include "grape/config.h"
+#include "string_view/string_view.hpp"
 
 namespace grape {
 
