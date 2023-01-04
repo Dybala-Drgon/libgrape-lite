@@ -44,4 +44,8 @@ DECLARE_string(serialization_prefix);
 DECLARE_int32(app_concurrency);
 
 DECLARE_string(lb);
+//=================================
+DECLARE_int64(temporal_source);
+DECLARE_uint64(start_time);
+DECLARE_uint64(end_time);
 #endif  // EXAMPLES_ANALYTICAL_APPS_FLAGS_H_

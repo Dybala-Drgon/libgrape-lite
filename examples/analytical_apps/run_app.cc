@@ -36,9 +36,12 @@ int main(int argc, char* argv[]) {
 
   grape::Init();
 
+  // TODO: 解析edge数据
   std::string name = FLAGS_application;
   if (name.find("sssp") != std::string::npos) {
     grape::Run<int64_t, uint32_t, grape::EmptyType, double>();
+  } else if (name.find("temporal") != std::string::npos) {
+    grape::Run<int64_t, uint64_t, grape::EmptyType, uint64_t>();
   } else {
     grape::Run<int64_t, uint32_t, grape::EmptyType, grape::EmptyType>();
   }

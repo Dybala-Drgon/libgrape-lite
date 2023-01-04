@@ -39,10 +39,13 @@ class SSSPAutoContext : public VertexDataContext<FRAG_T, double> {
         partial_result(this->data()) {}
 
   void Init(AutoParallelMessageManager<FRAG_T>& messages, oid_t source_id) {
+    // 拿到当前分区所有的节点
     auto& frag = this->fragment();
     auto vertices = frag.Vertices();
 
+    // 设定source节点
     this->source_id = source_id;
+    // 开始对节点状态进行初始化
     partial_result.Init(vertices, std::numeric_limits<double>::max(),
                         [](double* lhs, double rhs) {
                           if (*lhs > rhs) {

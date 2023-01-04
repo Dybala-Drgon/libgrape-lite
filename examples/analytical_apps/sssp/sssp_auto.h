@@ -50,10 +50,14 @@ class SSSPAuto : public AutoAppBase<FRAG_T, SSSPAutoContext<FRAG_T>> {
   void Dijkstra(const fragment_t& frag, context_t& ctx,
                 std::priority_queue<std::pair<double, vertex_t>>& heap) {
     {
+      // 获取内部节点
       auto inner_vertices = frag.InnerVertices();
+
+      // 创建节点array，可能是拿来存储节点的
       VertexArray<typename FRAG_T::inner_vertices_t, bool> modified(
           inner_vertices, false);
 
+      // 几个距离计数器
       double distu, distv, ndistv;
       vertex_t v, u;
 
@@ -66,7 +70,7 @@ class SSSPAuto : public AutoAppBase<FRAG_T, SSSPAutoContext<FRAG_T>> {
         // current partial_result of u, we reset its
         // updated state back to false
         ctx.partial_result.Reset(u);
-
+        // 如果已经松弛过了，直接跳过
         if (modified[u]) {
           continue;
         }

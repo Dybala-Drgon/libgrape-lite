@@ -51,3 +51,7 @@ DEFINE_int32(app_concurrency, -1, "concurrency of application");
 DEFINE_string(lb, "cm",
               "Load balancing policy, these options can be used: auto, "
               "auto_static, none, cta, cm, wm, strict");
+// ==============================
+DEFINE_uint64(start_time,0,"starting time in temporal graph edges");
+DEFINE_uint64(end_time, 0, "ending time in temporal graph edges,start_time > end_time represents no limit");
+DEFINE_int64(temporal_source, 0, "temporal graph start source");

@@ -52,6 +52,7 @@ limitations under the License.
 #include "pagerank/pagerank_parallel.h"
 #include "sssp/sssp.h"
 #include "sssp/sssp_auto.h"
+#include "temporal/earliest_arrival.h"
 #include "timer.h"
 #include "wcc/wcc.h"
 #include "wcc/wcc_auto.h"
@@ -208,6 +209,22 @@ void Run() {
       CreateAndQuery<OID_T, VID_T, VDATA_T, double, LoadStrategy::kOnlyOut,
                      SSSP, OID_T>(comm_spec, out_prefix, fnum, spec,
                                   FLAGS_sssp_source);
+    } else {
+      LOG(FATAL) << "No avaiable application named [" << name << "].";
+    }
+  } else if (name.find("temporal") != std::string::npos) {
+    if (name == "temporal_EA") {
+      // compute earliest arrival time
+      CreateAndQuery<OID_T, VID_T, VDATA_T, int64_t, LoadStrategy::kOnlyOut,
+                     Temporal_EA, OID_T, int64_t, int64_t>(
+          comm_spec, out_prefix, fnum, spec, FLAGS_temporal_source,
+          FLAGS_start_time, FLAGS_end_time);
+    } else if (name == "temporal_LD") {
+      // compute last despature time
+    } else if (name == "temporal_FP") {
+      // compute fastest path
+    } else if (name == "temporal_SP") {
+      // compute shortest path
     } else {
       LOG(FATAL) << "No avaiable application named [" << name << "].";
     }

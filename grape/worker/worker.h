@@ -125,6 +125,7 @@ class Worker {
                 << GetCurrentTime() - t << " sec";
       }
       ++step;
+      std::cout<<step<<"   "<<messages_.ToTerminate()<<std::endl;
     }
 
     MPI_Barrier(comm_spec_.comm());
