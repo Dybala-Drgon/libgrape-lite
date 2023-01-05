@@ -53,6 +53,7 @@ limitations under the License.
 #include "sssp/sssp.h"
 #include "sssp/sssp_auto.h"
 #include "temporal/earliest_arrival.h"
+#include "temporal/latest_departure.h"
 #include "timer.h"
 #include "wcc/wcc.h"
 #include "wcc/wcc_auto.h"
@@ -221,6 +222,10 @@ void Run() {
           FLAGS_start_time, FLAGS_end_time);
     } else if (name == "temporal_LD") {
       // compute last despature time
+      CreateAndQuery<OID_T, VID_T, VDATA_T, int64_t, LoadStrategy::kOnlyOut,
+                     Temporal_LD, OID_T, int64_t, int64_t>(
+          comm_spec, out_prefix, fnum, spec, FLAGS_temporal_source,
+          FLAGS_start_time, FLAGS_end_time);
     } else if (name == "temporal_FP") {
       // compute fastest path
     } else if (name == "temporal_SP") {
